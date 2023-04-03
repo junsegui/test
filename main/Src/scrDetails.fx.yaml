@@ -1,0 +1,676 @@
+scrDetails As screen:
+    Fill: =RGBA(255,255,255,1)
+    LoadingSpinnerColor: =RGBA(211, 66, 9, 1)
+
+    Rectangle5 As rectangle:
+        BorderColor: =RGBA(253, 222, 207, 1)
+        Fill: =RGBA(253, 222, 207, 1)
+        Height: =910
+        Width: =640
+        Y: =100
+        ZIndex: =1
+
+    Rectangle1_2 As rectangle:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Fill: =RGBA(246, 88, 16, 1)
+        Height: =126
+        Width: =640
+        Y: =1010
+        ZIndex: =2
+
+    FormViewer2 As formViewer:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        DataSource: ='Vacations Schedule'
+        Fill: =RGBA(255, 255, 255, 1)
+        Height: =884
+        Item: =varSelectedRegister
+        Width: =614
+        X: =13
+        Y: =112
+        ZIndex: =3
+
+        TotalDays_DataCard1 As typedDataCard.textualViewCard:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="TotalDays"
+            Default: =ThisItem.TotalDays
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Vacations Schedule'],DataSourceInfo.DisplayName,"TotalDays")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =110
+            Required: =false
+            Width: =614
+            X: =0
+            Y: =6
+            ZIndex: =1
+
+            DataCardKey1 As label:
+                Color: =RGBA(246, 88, 16, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =55
+                Size: =26
+                Text: ="Days in Total"
+                Width: =242
+                Wrap: =false
+                X: =117
+                Y: =55
+                ZIndex: =1
+
+            DataCardValue1 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(131, 24, 75, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisplayMode: =Parent.DisplayMode
+                Height: =47
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =DateDiff(ThisItem.StartDate,ThisItem.EndDate)
+                Width: =209
+                X: =300
+                Y: =63
+                ZIndex: =2
+
+        Title_DataCard3 As typedDataCard.textualViewCard:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =2
+            DataField: ="Title"
+            Default: =ThisItem.Title
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Vacations Schedule'],DataSourceInfo.DisplayName,"Title")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =91
+            Required: =true
+            Width: =614
+            X: =0
+            Y: =0
+            ZIndex: =3
+
+            DataCardKey17 As label:
+                Align: =Align.Center
+                AutoHeight: =true
+                Color: =RGBA(246, 88, 16, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =57
+                Size: =26
+                Text: ="Resume"
+                Width: =180
+                Wrap: =false
+                X: =212
+                ZIndex: =1
+
+            DataCardValue17 As label:
+                Align: =Align.Center
+                AutoHeight: =true
+                BorderColor: =RGBA(131, 24, 75, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =21
+                Text: =Parent.Default
+                Width: =575
+                X: =15
+                Y: =57
+                ZIndex: =2
+
+        Employee_DataCard3 As typedDataCard.comboBoxViewCard:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Employee"
+            Default: =ThisItem.Employee
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Vacations Schedule'],DataSourceInfo.DisplayName,"Employee")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =95
+            Required: =true
+            Update: =DataCardValue18.Selected
+            Width: =614
+            X: =0
+            Y: =1
+            ZIndex: =3
+
+            DataCardKey18 As label:
+                Align: =Align.Center
+                AutoHeight: =true
+                Color: =RGBA(246, 88, 16, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =57
+                Size: =26
+                Text: ="Employee"
+                Width: =174
+                Wrap: =false
+                X: =26
+                Y: =36
+                ZIndex: =1
+
+            DataCardValue18 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                ChevronBackground: =RGBA(211, 66, 9, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronHoverBackground: =ColorFade(RGBA(211, 66, 9, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["DisplayName","Email","Picture"]
+                DisplayMode: =Parent.DisplayMode
+                Height: =57
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(255, 211, 205, 1)
+                Items: =Choices([@'Vacations Schedule'].Employee)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(131, 24, 75, 1)
+                SearchFields: =["DisplayName"]
+                SearchItems: =Choices('Vacations Schedule'.Employee,DataCardValue18.SearchText)
+                SelectionFill: =RGBA(211, 66, 9, 1)
+                SelectMultiple: =false
+                Size: =16
+                Template: =ListItemTemplate.Person
+                Width: =398
+                X: =200
+                Y: =36
+                ZIndex: =2
+
+            ErrorMessage13 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue18.Y + DataCardValue18.Height
+                ZIndex: =3
+
+            StarVisible13 As label:
+                Align: =Align.Center
+                Color: =RGBA(131, 24, 75, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =DataCardKey18.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey18.Y
+                ZIndex: =4
+
+        Delegate_DataCard3 As typedDataCard.comboBoxViewCard:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Delegate"
+            Default: =ThisItem.Delegate
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Vacations Schedule'],DataSourceInfo.DisplayName,"Delegate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =100
+            Required: =true
+            Update: =DataCardValue19.Selected
+            Width: =614
+            X: =0
+            Y: =2
+            ZIndex: =3
+
+            DataCardKey19 As label:
+                Align: =Align.Center
+                Color: =RGBA(246, 88, 16, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =49
+                Size: =26
+                Text: =Parent.DisplayName
+                Width: =156
+                Wrap: =false
+                X: =30
+                Y: =34
+                ZIndex: =1
+
+            DataCardValue19 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                ChevronBackground: =RGBA(211, 66, 9, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronHoverBackground: =ColorFade(RGBA(211, 66, 9, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["DisplayName","Email","Picture"]
+                DisplayMode: =Parent.DisplayMode
+                Height: =49
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(255, 211, 205, 1)
+                Items: =Choices([@'Vacations Schedule'].Delegate)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(131, 24, 75, 1)
+                SearchFields: =["DisplayName"]
+                SearchItems: =Choices('Vacations Schedule'.Delegate,DataCardValue19.SearchText)
+                SelectionFill: =RGBA(211, 66, 9, 1)
+                SelectMultiple: =false
+                Size: =16
+                Template: =ListItemTemplate.Person
+                Width: =406
+                X: =208
+                Y: =34
+                ZIndex: =2
+
+            ErrorMessage14 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue19.Y + DataCardValue19.Height
+                ZIndex: =3
+
+            StarVisible14 As label:
+                Align: =Align.Center
+                Color: =RGBA(131, 24, 75, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =DataCardKey19.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey19.Y
+                ZIndex: =4
+
+        Leader_DataCard3 As typedDataCard.comboBoxViewCard:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="Leader"
+            Default: =ThisItem.Leader
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Vacations Schedule'],DataSourceInfo.DisplayName,"Leader")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =135
+            Required: =true
+            Update: =DataCardValue20.Selected
+            Width: =614
+            X: =0
+            Y: =3
+            ZIndex: =3
+
+            DataCardKey20 As label:
+                Align: =Align.Center
+                Color: =RGBA(246, 88, 16, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =52
+                Size: =26
+                Text: =Parent.DisplayName
+                Width: =146
+                Wrap: =false
+                X: =30
+                Y: =47
+                ZIndex: =1
+
+            DataCardValue20 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                ChevronBackground: =RGBA(211, 66, 9, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronHoverBackground: =ColorFade(RGBA(211, 66, 9, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["DisplayName","Email","Picture"]
+                DisplayMode: =Parent.DisplayMode
+                Height: =52
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(255, 211, 205, 1)
+                Items: =Choices([@'Vacations Schedule'].Leader)
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(131, 24, 75, 1)
+                SearchFields: =["DisplayName"]
+                SearchItems: =Choices('Vacations Schedule'.Leader,DataCardValue20.SearchText)
+                SelectionFill: =RGBA(211, 66, 9, 1)
+                SelectMultiple: =false
+                Size: =16
+                Template: =ListItemTemplate.Person
+                Width: =374
+                X: =210
+                Y: =47
+                ZIndex: =2
+
+            ErrorMessage15 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue20.Y + DataCardValue20.Height
+                ZIndex: =3
+
+            StarVisible15 As label:
+                Align: =Align.Center
+                Color: =RGBA(131, 24, 75, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =DataCardKey20.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey20.Y
+                ZIndex: =4
+
+        State_DataCard3 As typedDataCard.comboBoxViewCard:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="State"
+            Default: =ThisItem.State
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Vacations Schedule'],DataSourceInfo.DisplayName,"State")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =81
+            Required: =false
+            Update: =DataCardValue21.Selected
+            Width: =614
+            X: =0
+            Y: =4
+            ZIndex: =3
+
+            DataCardKey21 As label:
+                Align: =Align.Center
+                Color: =RGBA(246, 88, 16, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =47
+                Size: =26
+                Text: =Parent.DisplayName
+                Width: =118
+                Wrap: =false
+                X: =171
+                Y: =20
+                ZIndex: =1
+
+            DataCardValue21 As combobox:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                ChevronBackground: =RGBA(211, 66, 9, 1)
+                ChevronDisabledBackground: =RGBA(166, 166, 166, 1)
+                ChevronDisabledFill: =RGBA(244, 244, 244, 1)
+                ChevronHoverBackground: =ColorFade(RGBA(211, 66, 9, 1), -20%)
+                ChevronHoverFill: =RGBA(255, 255, 255, 1)
+                DefaultSelectedItems: =Parent.Default
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayFields: =["Value"]
+                DisplayMode: =Parent.DisplayMode
+                Height: =49
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(255, 211, 205, 1)
+                IsSearchable: =false
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(131, 24, 75, 1)
+                SearchFields: =["Value"]
+                SearchItems: =[]
+                SelectionFill: =RGBA(211, 66, 9, 1)
+                SelectMultiple: =false
+                Size: =21
+                Width: =152
+                X: =312
+                Y: =18
+                ZIndex: =2
+
+            ErrorMessage16 As label:
+                AutoHeight: =true
+                Color: =RGBA(168, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                FontWeight: =FontWeight.Semibold
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue21.Y + DataCardValue21.Height
+                ZIndex: =3
+
+            StarVisible16 As label:
+                Align: =Align.Center
+                Color: =RGBA(131, 24, 75, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =DataCardKey21.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey21.Y
+                ZIndex: =4
+
+        StartDate_DataCard3 As typedDataCard.textualViewCard:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="StartDate"
+            Default: =ThisItem.StartDate
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Vacations Schedule'],DataSourceInfo.DisplayName,"StartDate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =123
+            Required: =false
+            Width: =300
+            X: =0
+            Y: =5
+            ZIndex: =3
+
+            DataCardKey23 As label:
+                Align: =Align.Center
+                AutoHeight: =true
+                Color: =RGBA(246, 88, 16, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =48
+                Size: =26
+                Text: ="Start Date"
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =44
+                ZIndex: =1
+
+            DataCardValue23 As label:
+                Align: =Align.Center
+                AutoHeight: =true
+                BorderColor: =RGBA(131, 24, 75, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisplayMode: =Parent.DisplayMode
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =18
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =101
+                ZIndex: =2
+
+        EndDate_DataCard3 As typedDataCard.textualViewCard:
+            BorderColor: =RGBA(131, 24, 75, 1)
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="EndDate"
+            Default: =ThisItem.EndDate
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@'Vacations Schedule'],DataSourceInfo.DisplayName,"EndDate")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =145
+            Required: =false
+            Width: =314
+            WidthFit: =false
+            X: =0
+            Y: =5
+            ZIndex: =3
+
+            DataCardKey24 As label:
+                Align: =Align.Center
+                Color: =RGBA(246, 88, 16, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                Height: =59
+                Size: =26
+                Text: ="Start Date"
+                Width: =184
+                Wrap: =false
+                X: =76
+                Y: =43
+                ZIndex: =1
+
+            DataCardValue24 As label:
+                Align: =Align.Center
+                BorderColor: =RGBA(131, 24, 75, 1)
+                Color: =RGBA(0, 0, 0, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisplayMode: =Parent.DisplayMode
+                Height: =64
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =18
+                Text: =Parent.Default
+                Width: =240
+                X: =48
+                Y: =81
+                ZIndex: =2
+
+    Icon5 As icon.ChevronLeft:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.ChevronLeft
+        OnSelect: =Back(ScreenTransition.CoverRight)
+        X: =25
+        Y: =1041
+        ZIndex: =4
+
+    Rectangle1_3 As rectangle:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Fill: =RGBA(246, 88, 16, 1)
+        Width: =640
+        ZIndex: =5
+
+    UserName_1 As label:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        Fill: =RGBA(246, 88, 16, 1)
+        Height: =70
+        Size: =21
+        Text: =$"{User().FullName}"
+        Width: =614
+        X: =26
+        Y: =15
+        ZIndex: =6
+
+    Icon8 As icon.Trash:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(166, 166, 166, 1)
+        DisabledColor: =RGBA(244, 244, 244, 1)
+        Icon: =Icon.Trash
+        OnSelect: =Remove('Vacations Schedule',varSelectedRegister);Navigate(scrIndex,ScreenTransition.CoverRight)
+        X: =520
+        Y: =1041
+        ZIndex: =7
+
+    line As rectangle:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Fill: =RGBA(118, 0, 0, 1)
+        Height: =2
+        Width: =590
+        X: =25
+        Y: =236
+        ZIndex: =8
+
+    line_1 As rectangle:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Fill: =RGBA(118, 0, 0, 1)
+        Height: =2
+        Width: =590
+        X: =25
+        Y: =312
+        ZIndex: =9
+
+    line_2 As rectangle:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Fill: =RGBA(118, 0, 0, 1)
+        Height: =2
+        Width: =590
+        X: =25
+        Y: =526
+        ZIndex: =10
+
+    line_4 As rectangle:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Fill: =RGBA(118, 0, 0, 1)
+        Height: =2
+        Width: =590
+        X: =26
+        Y: =794
+        ZIndex: =12
+
+    line_5 As rectangle:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Fill: =RGBA(118, 0, 0, 1)
+        Height: =2
+        Width: =590
+        X: =25
+        Y: =638
+        ZIndex: =13
+
+    line_3 As rectangle:
+        BorderColor: =RGBA(131, 24, 75, 1)
+        Fill: =RGBA(118, 0, 0, 1)
+        Height: =2
+        Width: =590
+        X: =25
+        Y: =419
+        ZIndex: =14
+

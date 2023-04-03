@@ -1,0 +1,50 @@
+{
+  "39aeb442-d752-4d5d-b976-b1c363db94dd": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/laborbol/releases/ase-v3/1.0.1622.3202/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "39aeb442-d752-4d5d-b976-b1c363db94dd"
+  },
+  "5a761223-a15d-4ebb-a6a1-a13e3878c93b": {
+    "connectionParameters": {
+      "sku": "Enterprise"
+    },
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/u/laborbol/releases/ase-v3/1.0.1622.3202/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://boehringer.sharepoint.com/sites/z365juanplayground": {
+        "dataSources": {
+          "Vacations Schedule": {
+            "tableName": "5a554ce5-8364-43cb-8329-df34930b7904"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Vacations Schedule"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "5a761223-a15d-4ebb-a6a1-a13e3878c93b"
+  }
+}
